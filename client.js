@@ -6,9 +6,10 @@ const connect = function () {
     port: 50541// PORT number here, server port
   });
 
-  // conn.on("connect", () => {
-  //   conn.write("Connection established!"); //sends msg to server once connection established
-  // });
+  conn.on("connect", () => {
+    const name="Name: DSL"
+    conn.write(`Successfully connected to game server! This is ${name}`); //sends msg to server once connection established
+  });
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
