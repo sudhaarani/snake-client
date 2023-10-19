@@ -1,13 +1,15 @@
-const net = require("net");
+const net = require("net");//net module from node app to use TCP
+const { IP, PORT } = require("./constants"); //importing constant variables from constants.js
 // establishes a connection with the game server
-const connect = function () {
-  const conn = net.createConnection({
-    host: "172.31.60.168",// IP address here, server ip address
-    port: 50541// PORT number here, server port
+const connect = function() {
+  const conn = net.createConnection({ //establishing a connection
+    host: IP,// IP address here, server ip address
+    port: PORT// PORT number here, server port
   });
 
   conn.on("connect", () => {
-    const name="Name: DSL"
+    const name = "Name: DS";
+    //const moveUp = "Move: up";
     conn.write(`Successfully connected to game server! This is ${name}`); //sends msg to server once connection established
   });
 
@@ -21,4 +23,4 @@ const connect = function () {
   return conn;
 };
 
-module.exports = { connect };
+module.exports = { connect }; // emporting connect function
